@@ -399,6 +399,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        python-version: '3.8.0'
     - name: clone esp-idf
       run: |
         alias python=python3

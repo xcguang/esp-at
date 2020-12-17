@@ -401,7 +401,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: clone esp-idf
       run: |
-        ls $PATH
+        echo $PATH
         ls /user/local/bin
         alias python=python3
         pip install --upgrade pip

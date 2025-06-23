@@ -166,9 +166,15 @@ jobs:
 
   build-esp32c2-4mb-ble-g2-at:
     steps:
-      - run: echo -e "CONFIG_AT_BLE_COMMAND_SUPPORT=y" >> module_config/module_esp32c2-4mb-g2/sdkconfig.defaults
-      - uses: ./.github/workflows/build_template_esp32c2.yml
-    with:
-      module_name: ESP32C2-4MB-G2
-      artifacts_name: esp32c2-4MB-ble-g2-at
-    secrets: inherit
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Add BLE support to sdkconfig
+        run: echo -e "CONFIG_AT_BLE_COMMAND_SUPPORT=y" >> module_config/module_esp32c2-4mb-g2/sdkconfig.defaults
+
+      - name: Build ESP32C2-4MB-G2 with BLE
+        uses: ./.github/workflows/build_template_esp32c2.yml
+        with:
+          module_name: ESP32C2-4MB-G2
+          artifacts_name: esp32c2-4MB-ble-g2-at
+        secrets: inherit

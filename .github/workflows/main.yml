@@ -165,6 +165,7 @@ jobs:
     secrets: inherit
 
   build-esp32c2-4mb-ble-g2-at:
+    runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
